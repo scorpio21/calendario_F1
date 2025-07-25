@@ -1,0 +1,82 @@
+[
+  {
+    "position": 1,
+    "name": "McLaren-Mercedes",
+    "points": 442,
+    "nationality": "4",
+    "engine": "1",
+    "image": "./calendario_tabla_files/Flag_of_the_United_Kingdom_(3-5).svg.png"
+  },
+  {
+    "position": 2,
+    "name": "Ferrari",
+    "points": 222,
+    "nationality": "16",
+    "engine": "8",
+    "image": "./calendario_tabla_files/Flag_of_Italy.svg.png"
+  },
+  {
+    "position": 3,
+    "name": "Mercedes",
+    "points": 210,
+    "nationality": "12",
+    "engine": "4",
+    "image": "./calendario_tabla_files/Flag_of_Germany.svg.png"
+  },
+  {
+    "position": 4,
+    "name": "Red Bull-Honda RBPT",
+    "points": 172,
+    "nationality": "1",
+    "engine": "2",
+    "image": "./calendario_tabla_files/Flag_of_Austria.svg.png"
+  },
+  {
+    "position": 5,
+    "name": "Williams-Mercedes",
+    "points": 59,
+    "nationality": "23",
+    "engine": "5",
+    "image": "./calendario_tabla_files/Flag_of_the_United_Kingdom_(3-5).svg.png"
+  },
+  {
+    "position": 6,
+    "name": "Kick Sauber-Ferrari",
+    "points": 41,
+    "nationality": "5",
+    "engine": "Ret",
+    "image": "./calendario_tabla_files/Flag_of_Switzerland.svg.png"
+  },
+  {
+    "position": 7,
+    "name": "Racing Bulls-Honda RBPT",
+    "points": 36,
+    "nationality": "6",
+    "engine": "DNS",
+    "image": "./calendario_tabla_files/Flag_of_Italy.svg.png"
+  },
+  {
+    "position": 8,
+    "name": "Aston Martin Aramco-Mercedes",
+    "points": 36,
+    "nationality": "14",
+    "engine": "Ret",
+    "image": "./calendario_tabla_files/Flag_of_the_United_Kingdom_(3-5).svg.png"
+  },
+  {
+    "position": 9,
+    "name": "Haas-Ferrari",
+    "points": 29,
+    "nationality": "31",
+    "engine": "13",
+    "image": "./calendario_tabla_files/Flag_of_the_United_States.svg.png"
+  },
+  {
+    "position": 10,
+    "name": "Alpine-Renault",
+    "points": 19,
+    "nationality": "7",
+    "engine": "Ret",
+    "image": "./calendario_tabla_files/Flag_of_France.svg.png"
+  }
+]
