@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redimensionar Icono</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        canvas {
+            border: 1px solid #eee;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #e10600;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #c10500;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Redimensionar Icono para Manifest</h1>
+    
+    <div class="container">
+        <h2>Paso 1: Seleccionar imagen</h2>
+        <input type="file" id="imageInput" accept="image/*">
+        <div id="originalImageContainer"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Paso 2: Elegir tamaño y redimensionar</h2>
+        <label for="iconSize">Tamaño del icono:</label>
+        <select id="iconSize">
+            <option value="180">180x180</option>
+            <option value="192" selected>192x192</option>
+            <option value="256">256x256</option>
+            <option value="384">384x384</option>
+            <option value="512">512x512</option>
+        </select>
+        <label for="bgColor" style="margin-left:16px;">Color de fondo:</label>
+        <select id="bgColor">
+            <option value="#ffe600" selected>Amarillo F1</option>
+            <option value="#ffffff">Blanco</option>
+            <option value="#e10600">Rojo F1</option>
+            <option value="#000000">Negro</option>
+        </select>
+        <button id="resizeButton" disabled>Redimensionar</button>
+        <div id="resizedImageContainer"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Paso 3: Descargar imagen redimensionada</h2>
+        <button id="downloadButton" disabled>Descargar imagen</button>
+        <div class="result">
+            <p>Una vez descargada la imagen:</p>
+            <ol>
+                <li>Reemplaza el archivo F1-Logo.png en la carpeta img</li>
+                <li>Verifica que el manifest.json tenga la configuración correcta:</li>
+                <pre>
+"icons": [
+  {
+    "src": "img/F1-Logo.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }
+]</pre>
+                <li>Asegúrate de quitar el "./" del inicio de la ruta</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageInput = document.getElementById('imageInput');
+            const resizeButton = document.getElementById('resizeButton');
+            const downloadButton = document.getElementById('downloadButton');
+            const originalImageContainer = document.getElementById('originalImageContainer');
+            const resizedImageContainer = document.getElementById('resizedImageContainer');
+            
+            let originalImage = null;
+            let resizedCanvas = null;
+            
+            imageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    originalImageContainer.innerHTML = '';
+                    
+                    originalImage = new Image();
+                    originalImage.src = event.target.result;
+                    
+                    originalImage.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Mantener la proporción de la imagen original
+                        const maxDimension = Math.max(originalImage.width, originalImage.height);
+                        const scale = 300 / maxDimension;
+                        
+                        canvas.width = originalImage.width * scale;
+                        canvas.height = originalImage.height * scale;
+                        
+                        ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+                        originalImageContainer.appendChild(canvas);
+                        
+                        const dimensions = document.createElement('p');
+                        dimensions.textContent = `Dimensiones originales: ${originalImage.width}x${originalImage.height} píxeles`;
+                        originalImageContainer.appendChild(dimensions);
+                        
+                        resizeButton.disabled = false;
+                    };
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            resizeButton.addEventListener('click', function() {
+                if (!originalImage) return;
+                
+                resizedImageContainer.innerHTML = '';
+                
+                // Obtener tamaño seleccionado
+                const size = parseInt(document.getElementById('iconSize').value, 10);
+                
+                resizedCanvas = document.createElement('canvas');
+                resizedCanvas.width = size;
+                resizedCanvas.height = size;
+                
+                const ctx = resizedCanvas.getContext('2d');
+                
+                // Fondo según selección del usuario
+                const bgColor = document.getElementById('bgColor').value;
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, size, size);
+                
+                // Calcular dimensiones manteniendo proporción
+                const aspectRatio = originalImage.width / originalImage.height;
+                let drawWidth, drawHeight, offsetX = 0, offsetY = 0;
+                
+                if (aspectRatio > 1) {
+                    // Imagen más ancha que alta
+                    drawWidth = size;
+                    drawHeight = size / aspectRatio;
+                    offsetY = (size - drawHeight) / 2;
+                } else {
+                    // Imagen más alta que ancha
+                    drawHeight = size;
+                    drawWidth = size * aspectRatio;
+                    offsetX = (size - drawWidth) / 2;
+                }
+                
+                ctx.drawImage(originalImage, offsetX, offsetY, drawWidth, drawHeight);
+                
+                resizedImageContainer.appendChild(resizedCanvas);
+                
+                const dimensions = document.createElement('p');
+                let colorDesc = 'personalizado';
+                if(bgColor === '#ffe600') colorDesc = 'amarillo';
+                else if(bgColor === '#ffffff') colorDesc = 'blanco';
+                else if(bgColor === '#e10600') colorDesc = 'rojo';
+                else if(bgColor === '#000000') colorDesc = 'negro';
+                dimensions.textContent = `Dimensiones redimensionadas: ${size}x${size} píxeles (fondo ${colorDesc})`;
+                resizedImageContainer.appendChild(dimensions);
+                
+                // Guardar tamaño para descarga
+                resizedCanvas.dataset.size = size;
+                downloadButton.disabled = false;
+            });
+            
+            downloadButton.addEventListener('click', function() {
+                if (!resizedCanvas) return;
+                const size = resizedCanvas.dataset.size || '192';
+                const link = document.createElement('a');
+                link.download = `F1-Logo-${size}x${size}.png`;
+                link.href = resizedCanvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>

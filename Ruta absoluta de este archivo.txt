@@ -1,0 +1,14 @@
+Ruta absoluta de este archivo: 
+/home/vol14_2/infinityfree.com/if0_38919029/f1-2025.wuaze.com/htdocs/ver_carpeta.php
+
+Directorio actual (getcwd): 
+/home/vol14_2/infinityfree.com/if0_38919029/f1-2025.wuaze.com/htdocs
+
+DOCUMENT_ROOT del servidor: 
+/home/vol14_2/infinityfree.com/if0_38919029/f1-2025.wuaze.com/htdocs
+
+SCRIPT_FILENAME: 
+/home/vol14_2/infinityfree.com/if0_38919029/f1-2025.wuaze.com/htdocs/ver_carpeta.php
+
+REQUEST_URI: 
+/ver_carpeta.php

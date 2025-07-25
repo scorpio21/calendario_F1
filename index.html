@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e10600">
+    <title>Calendario Fórmula 1 2025</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/circuit-modal.css">
+    <link rel="stylesheet" href="css/podium.css">
+    <link rel="stylesheet" href="css/podium-table.css">
+    <link rel="stylesheet" href="css/weather.css">
+    <link rel="stylesheet" href="css/countdown.css">
+    <link rel="stylesheet" href="css/standings.css">
+    <link rel="stylesheet" href="css/race-details.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/race-details-modal.css">
+    <link rel="stylesheet" href="css/driver-modal.css">
+    <link rel="stylesheet" href="css/classification.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <header role="banner">
+        <div class="header-container">
+            <div class="logo">
+                <img src="img/F1-Logo.png" alt="Fórmula 1 Logo">
+            </div>
+            <h1>Calendario F1 2025</h1>
+        </div>
+    </header>
+
+    <nav class="tabs" role="navigation" aria-label="Navegación principal">
+        <div class="tab-container" role="tablist">
+          <button class="tab-head tab-active" role="tab" aria-selected="true" aria-controls="tab_1" id="tab-btn-1" data-content="tab_1">Calendario</button>
+          <button class="tab-head" role="tab" aria-selected="false" aria-controls="tab_2" id="tab-btn-2" data-content="tab_2">Clasificación Pilotos</button>
+          <button class="tab-head" role="tab" aria-selected="false" aria-controls="tab_3" id="tab-btn-3" data-content="tab_3">Puntos por carrera</button>
+          <button class="tab-head" role="tab" aria-selected="false" aria-controls="tab_4" id="tab-btn-4" data-content="tab_4">Clasificación Constructores</button>
+          <button class="tab-head" role="tab" aria-selected="false" aria-controls="tab_5" id="tab-btn-5" data-content="tab_5">Equipos</button>
+          <button class="tab-head" role="tab" aria-selected="false" aria-controls="tab_6" id="tab-btn-6" data-content="tab_6">Circuitos</button>
+        </div>
+      </nav>
+
+      <main id="main-content">
+        <div id="tab_1" role="tabpanel" aria-labelledby="tab-btn-1" class="tab-content tab-visible">
+            <h2 class="sr-only">Calendario de carreras</h2>
+            <div class="races-container" role="region" aria-label="Lista de carreras de la temporada">
+                <!-- Las carreras se cargarán dinámicamente desde JavaScript -->
+            </div>
+        </div>
+    
+        <div id="tab_2" role="tabpanel" aria-labelledby="tab-btn-2" class="tab-content tab-hidden">
+            <h2 class="sr-only">Clasificación de pilotos</h2>
+            <div class="standings-container" role="region" aria-label="Clasificación de pilotos y equipos">
+                <!-- La clasificación se cargará dinámicamente aquí -->
+            </div>
+        </div>
+        
+        <div id="tab_3" role="tabpanel" aria-labelledby="tab-btn-3" class="tab-content tab-hidden">
+            <h2 class="section-title">Puntos por carrera</h2>
+            <div class="race-points-container">
+                <!-- Los puntos por carrera se cargarán dinámicamente aquí -->
+            </div>
+        </div>
+        <div id="tab_4" role="tabpanel" aria-labelledby="tab-btn-4" class="tab-content tab-hidden">
+            <h2 class="section-title">Clasificación Constructores</h2>
+            <div class="constructors-standings-container">
+                <!-- La clasificación de constructores se cargará dinámicamente aquí -->
+            </div>
+        </div>
+        <div id="tab_5" role="tabpanel" aria-labelledby="tab-btn-5" class="tab-content tab-hidden">
+            <h2 class="section-title">Equipos</h2>
+            <div class="teams-grid">
+                <!-- Los equipos se cargarán dinámicamente aquí -->
+            </div>
+        </div>
+    
+        <div id="tab_6" role="tabpanel" aria-labelledby="tab-btn-6" class="tab-content tab-hidden">
+            <h2 class="sr-only">Circuitos</h2>
+            <div class="circuits-container" role="region" aria-label="Circuitos de la temporada">
+                <div class="circuit-grid">
+                    <!-- Los circuitos se cargarán dinámicamente -->
+                </div>
+                <div class="load-more-container">
+                    <button id="load-more-circuits" class="load-more-button" aria-label="Cargar más circuitos">Cargar más circuitos</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Calendario F1 - Creado por Fan</p>
+    </footer>
+
+    <!-- Scripts de terceros -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cheerio/1.0.0/cheerio.min.js"></script>
+    
+    <!-- Datos de la aplicación -->
+    <script src="js/drivers-data.js"></script>
+    <script src="js/races-data.js"></script>
+    <script src="js/driver-images.js"></script>
+    <script src="js/load-teams-tab.js"></script>
+    <script src="js/circuit-details.js"></script>
+    <script src="js/driver-profiles.js"></script>
+    
+    <!-- Módulos principales -->
+    <script src="js/script.js"></script>
+    <script src="js/race-scraper.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/load-standings-tab.js"></script>
+    <script src="js/podium.js"></script>
+    <script src="js/driver-modal.js"></script>
+    <script src="js/race-details.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/update-indicator.js"></script>
+    <script src="js/load-circuits-tab.js"></script>
+    <script src="js/team-drivers-2025.js"></script>
+    <script src="js/teams-data.js"></script>
+    <script src="js/load-teams-tab.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Script de depuración -->
+    <!--<script>
+        // Función de depuración simple
+        function logDebug(message, data) {
+            const timestamp = new Date().toISOString();
+            const logMessage = `[${timestamp}] ${message}${data ? ' ' + JSON.stringify(data) : ''}`;
+            console.log(logMessage);
+            
+            // Almacenar en localStorage
+            try {
+                const logs = JSON.parse(localStorage.getItem('debugLogs') || '[]');
+                logs.push(logMessage);
+                localStorage.setItem('debugLogs', JSON.stringify(logs));
+            } catch (e) {
+                console.error('Error al guardar en localStorage:', e);
+            }
+        }
+        
+        // Función para descargar logs
+      //  function downloadLogs() {
+      //      try {
+      //          const logs = JSON.parse(localStorage.getItem('debugLogs') || '[]').join('\n');
+      //          const blob = new Blob([logs], { type: 'text/plain' });
+      //          const url = URL.createObjectURL(blob);
+      //          const a = document.createElement('a');
+      //          a.href = url;
+      //          a.download = 'debug-logs.txt';
+      //          document.body.appendChild(a);
+      //          a.click();
+      //          document.body.removeChild(a);
+      //          URL.revokeObjectURL(url);
+      //      } catch (e) {
+      //          console.error('Error al descargar logs:', e);
+      //      }
+      //  }
+        
+        // Añadir botón de descarga
+      //  document.addEventListener('DOMContentLoaded', function() {
+       //     if (!document.getElementById('downloadLogsBtn')) {
+       //         const btn = document.createElement('button');
+       //         btn.id = 'downloadLogsBtn';
+       //         btn.textContent = 'Descargar Logs';
+       //         btn.style.position = 'fixed';
+       //         btn.style.bottom = '20px';
+       //         btn.style.right = '20px';
+       //         btn.style.zIndex = '9999';
+       //         btn.style.padding = '10px';
+       //         btn.style.backgroundColor = '#e10600';
+       //         btn.style.color = 'white';
+       //         btn.style.border = 'none';
+       //         btn.style.borderRadius = '5px';
+       //         btn.style.cursor = 'pointer';
+       //         btn.onclick = downloadLogs;
+       //         document.body.appendChild(btn);
+       //     }
+       // });
+        
+       // logDebug('Sistema de depuración iniciado');
+    </script>-->
+  <script src="js/team-modal.js"></script>
+</body>
+</html>
