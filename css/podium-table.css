@@ -1,0 +1,50 @@
+/* Estilos para la tabla del podio */
+.podium-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.podium-table td {
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.position-number {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #e10600;
+    color: white;
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: 0.8rem;
+}
+
+/* Estilos específicos para cada posición */
+.podium-table tr:first-child td:first-child .position-number {
+    background-color: #ffd700; /* Oro para el primer lugar */
+}
+
+.podium-table tr:first-child td:nth-child(2) .position-number {
+    background-color: #c0c0c0; /* Plata para el segundo lugar */
+}
+
+.podium-table tr:first-child td:nth-child(3) .position-number {
+    background-color: #cd7f32; /* Bronce para el tercer lugar */
+}
+
+/* Estilos para los nombres y equipos */
+.podium-table tr:first-child td {
+    font-weight: bold;
+}
+
+.podium-table tr:last-child td {
+    color: #666;
+    font-size: 0.8rem;
+}

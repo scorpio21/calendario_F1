@@ -1,0 +1,145 @@
+/* Estilos para la tabla de clasificación de pilotos y equipos */
+.standings-container {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.standings-container h2 {
+    color: #e10600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.standings-table th,
+.standings-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.standings-table th {
+    background-color: #e10600;
+    color: white;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.standings-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.standings-table .pos {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.standings-table .points {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Estilos para la información del piloto */
+.driver-info {
+    display: flex;
+    align-items: center;
+}
+
+.driver-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.driver-info .name {
+    font-weight: bold;
+}
+
+.driver-info .team {
+    font-size: 0.8rem;
+    color: #666;
+    display: block;
+}
+
+/* Estilos para la tabla de puntos por carrera */
+.race-points-table {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.race-points-table table {
+    width: max-content;
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.race-points-table th {
+    min-width: 60px;
+    text-align: center;
+    padding: 10px 5px;
+    background-color: #e10600;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.race-points-table th img {
+    width: 20px;
+    height: 12px;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.race-points-table td {
+    text-align: center;
+    padding: 10px 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.race-points-table td.points {
+    font-weight: bold;
+}
+
+.race-points-table td.position {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.race-points-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .standings-table th,
+    .standings-table td {
+        padding: 8px 10px;
+    }
+    
+    .driver-info .team {
+        display: none;
+    }
+    
+    .race-points-table th {
+        min-width: 40px;
+        padding: 8px 3px;
+    }
+    
+    .race-points-table td {
+        padding: 8px 3px;
+    }
+}

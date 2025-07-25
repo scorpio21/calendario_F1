@@ -1,0 +1,194 @@
+/* Estilos para el podio de ganadores */
+.podium-container {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 15px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.podium-container h3 {
+    color: #e10600;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 30px 0;
+    position: relative;
+    height: 200px;
+    padding: 0 20px;
+}
+
+.podium-position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    margin: 0 5px;
+}
+
+.podium-position:hover {
+    transform: translateY(-5px);
+}
+
+.podium-position.first {
+    z-index: 3;
+}
+
+.podium-position.second {
+    z-index: 2;
+    margin-right: 10px;
+}
+
+.podium-position.third {
+    z-index: 1;
+    margin-left: 10px;
+}
+
+.podium-step {
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.podium-position.first .podium-step {
+    height: 80px;
+    background-color: #ffcc00; /* Gold */
+}
+
+.podium-position.second .podium-step {
+    height: 60px;
+    background-color: #c0c0c0; /* Silver */
+}
+
+.podium-position.third .podium-step {
+    height: 40px;
+    background-color: #cd7f32; /* Bronze */
+}
+
+.driver-name {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.driver-team {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.team-icon {
+    width: 24px;  /* Mantener tamaño original del contenedor del icono */
+    height: 24px; /* Mantener tamaño original del contenedor del icono */
+    margin: 0 auto 5px auto; /* Centrar el bloque del icono y añadir espacio debajo para el nombre del equipo */
+    display: flex; /* Usar flexbox para centrar la imagen si es más pequeña que el contenedor */
+    align-items: center;
+    justify-content: center;
+}
+
+.team-icon img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor .team-icon */
+    height: 100%; /* La imagen ocupa toda la altura del contenedor .team-icon */
+    object-fit: contain; /* Asegura que la imagen se escale para caber, manteniendo la proporción */
+    display: block; /* Comportamiento de bloque para la imagen */
+}
+
+.driver-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 70px;
+    background-color: #e10600;
+    z-index: 10;
+    padding: 0;
+}
+
+.podium-position.first .driver-image,
+.podium-position.second .driver-image,
+.podium-position.third .driver-image {
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.driver-name {
+    margin-top: 80px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+
+.driver-team {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .podium {
+        flex-wrap: wrap;
+        height: auto;
+        padding-top: 100px;
+    }
+    
+    .podium-position {
+        margin: 10px;
+        margin-top: 60px;
+    }
+    
+    .driver-image {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+    }
+    
+    .driver-name {
+        margin-top: 10px;
+    }
+}

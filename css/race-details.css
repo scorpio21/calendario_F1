@@ -1,0 +1,141 @@
+/* Estilos para los detalles de la carrera */
+.race-details {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.race-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.race-details-title {
+    color: #e10600;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.race-details-toggle {
+    background-color: #e10600;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.race-details-toggle:hover {
+    background-color: #c00500;
+}
+
+.race-details-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.race-schedule, .circuit-info {
+    background-color: white;
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.race-schedule h4, .circuit-info h4 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #eee;
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.schedule-day {
+    font-weight: bold;
+    color: #333;
+}
+
+.schedule-time {
+    color: #666;
+}
+
+.circuit-info-item {
+    margin-bottom: 8px;
+}
+
+.circuit-info-label {
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    min-width: 100px;
+}
+
+.circuit-info-value {
+    color: #666;
+}
+
+.lap-record {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+.lap-record-title {
+    font-weight: bold;
+    color: #e10600;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.lap-record-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+/* Estilos para alta accesibilidad */
+.race-details-toggle:focus {
+    outline: 3px solid #0078d7;
+    outline-offset: 2px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .race-details-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .race-details-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .race-details-toggle {
+        margin-top: 10px;
+        width: 100%;
+    }
+}

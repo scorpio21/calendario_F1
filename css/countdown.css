@@ -1,0 +1,77 @@
+/* Estilos para el contador regresivo */
+.countdown-container {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 15px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.countdown-container h3 {
+    color: #e10600;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.race-info {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.race-info p {
+    margin: 5px 0;
+    color: #333;
+}
+
+.race-info i {
+    color: #e10600;
+    margin-right: 5px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.countdown-item span:first-child {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e10600;
+}
+
+.countdown-label {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.countdown-complete {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #e10600;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .countdown {
+        flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+        margin: 10px;
+        min-width: 40%;
+    }
+}

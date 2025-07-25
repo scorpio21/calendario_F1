@@ -1,0 +1,1368 @@
+/* ===== ESTILOS GENERALES ===== */
+
+/* === ESTILOS PARA EL TAB DE EQUIPOS DE F1 === */
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 20px 16px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 340px;
+  position: relative;
+}
+
+.team-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.team-image img,
+.car-image img {
+  border: 2px solid red;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f4f4f4;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.team-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 0;
+}
+.team-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  padding-bottom: 30px;
+  margin-top: 0;
+}
+.team-details {
+  margin-bottom: 40px;
+  padding-bottom: 0;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: relative;
+  width: 100%;
+  text-align: left;
+}
+.team-drivers {
+  margin-top: 0;
+  margin-bottom: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  background: #fff;
+  padding-bottom: 0;
+  position: relative;
+}
+.driver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+}
+.driver-image {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+.driver-image img.driver-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  transition: opacity 0.3s;
+  opacity: 1 !important;
+  display: block;
+}
+.flag-container {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 32px;
+  height: 22px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+  background: #fff;
+}
+.flag-container img.driver-flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.driver-info {
+  text-align: center;
+  margin-top: 6px;
+}
+.driver-number {
+  font-weight: 700;
+  color: #e10600;
+  margin-right: 4px;
+}
+.driver-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+}
+
+
+.team-details {
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.team-drivers {
+  margin-top: 8px;
+}
+
+.team-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.team-drivers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.driver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+}
+
+.driver-image {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.driver-image img.driver-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  transition: opacity 0.3s;
+  opacity: 1 !important;
+  display: block;
+}
+
+.flag-container {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 32px;
+  height: 22px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+  background: #fff;
+}
+
+.flag-container img.driver-flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.driver-info {
+  text-align: center;
+  margin-top: 6px;
+}
+
+.driver-number {
+  font-weight: 700;
+  color: #e10600;
+  margin-right: 4px;
+}
+
+.driver-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+}
+
+@media (max-width: 600px) {
+  .teams-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .team-card {
+    min-height: 260px;
+    padding: 12px 4px;
+  }
+  .driver {
+    width: 88px;
+  }
+  .driver-image, .driver-image img.driver-img {
+    width: 88px;
+    height: 88px;
+  }
+}
+
+/* Reseteo de estilos para todos los elementos */
+* {
+    margin: 0;                      /* Elimina márgenes por defecto */
+    padding: 0;                     /* Elimina padding por defecto */
+    box-sizing: border-box;         /* Incluye padding y border en el ancho/alto */
+    font-family: 'Roboto', Arial, sans-serif; /* Fuente principal */
+}
+
+/* Estilos del cuerpo del documento */
+body {
+    background-color: #f8f8f8;      /* Color de fondo gris claro */
+    color: #333;                    /* Color de texto principal */
+    line-height: 1.6;               /* Altura de línea para mejor legibilidad */
+}
+
+/* Estilos de la cabecera */
+header {
+    background-color: #3300fd;      /* Color de fondo azul */
+    color: white;                   /* Color de texto blanco */
+    padding: 1rem 0;                /* Espaciado vertical */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Contenedor de la cabecera */
+.header-container {
+    display: flex;                  /* Usa flexbox para alinear elementos */
+    align-items: center;            /* Centra verticalmente los elementos */
+    justify-content: center;        /* Centra horizontalmente los elementos */
+    max-width: 1200px;              /* Ancho máximo del contenedor */
+    margin: 0 auto;                 /* Centra el contenedor */
+    padding: 0 1rem;                /* Espaciado horizontal */
+}
+
+/* Estilos del logo */
+.logo {
+    margin-right: 1rem;             /* Espacio a la derecha del logo */
+}
+
+/* Imagen del logo */
+.logo img {
+    height: 40px;                   /* Altura fija para el logo */
+}
+
+/* Estilos para el título principal */
+h1 {
+    font-size: 1.5rem;              /* Tamaño de fuente */
+    font-weight: 700;               /* Grosor de la fuente */
+}
+
+/* ===== ESTILOS DE PESTAÑAS ===== */
+
+/* Contenedor principal de las pestañas */
+.tabs {
+    background-color: #2b00ff;      /* Fondo azul para la barra de pestañas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Contenedor de los botones de pestaña */
+.tab-container {
+    display: flex;                  /* Muestra los botones en línea */
+    max-width: 1200px;              /* Ancho máximo */
+    margin: 0 auto;                 /* Centra el contenedor */
+    overflow-x: auto;               /* Permite desplazamiento horizontal en móviles */
+}
+
+/* Estilos de cada botón de pestaña */
+.tab-head {
+    padding: 1rem 1.5rem;           /* Espaciado interno */
+    background: none;               /* Sin fondo */
+    border: none;                   /* Sin borde */
+    color: #666;                    /* Color de texto gris */
+    font-weight: 500;               /* Grosor de fuente medio */
+    cursor: pointer;                /* Cambia el cursor a mano */
+    transition: all 0.3s ease;      /* Transición suave para efectos hover */
+    white-space: nowrap;            /* Evita saltos de línea */
+}
+
+/* Efecto hover en los botones de pestaña */
+.tab-head:hover {
+    color: #3c00ff;                 /* Cambia el color al pasar el ratón */
+}
+
+/* Estilo para la pestaña activa */
+.tab-active {
+    color: #c1c704;                 /* Color amarillo para la pestaña activa */
+    border-bottom: 3px solid #c0c704c2; /* Subrayado amarillo */
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+
+/* Contenedor principal del contenido */
+main {
+    max-width: 1200px;              /* Ancho máximo del contenido */
+    margin: 0 auto;                 /* Centra el contenedor */
+    padding: 1rem;                  /* Espaciado interno */
+}
+
+/* Contenedor del contenido de cada pestaña */
+.tab-content {
+    padding: 1rem 0;                /* Espaciado vertical */
+}
+
+/* ===== ESTILOS DE CARRERAS ===== */
+
+/* Contenedor principal de la lista de carreras */
+.races-container {
+    display: flex;                  /* Usa flexbox para el diseño */
+    flex-direction: column;         /* Apila los elementos verticalmente */
+    gap: 1rem;                      /* Espacio entre elementos */
+}
+
+/* Contenedor de fecha para agrupar carreras */
+.bsp-schedule-date-pivot {
+    background-color: #fff;         /* Fondo blanco */
+    border-radius: 8px;             /* Bordes redondeados */
+    overflow: hidden;               /* Oculta el desbordamiento */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Contenedor de información de una carrera */
+.bsp_race_container {
+    padding: 1rem;                  /* Espaciado interno */
+}
+
+/* Título de la carrera */
+.bsp_race_title {
+    font-size: 1.2rem;              /* Tamaño de fuente */
+    font-weight: 700;               /* Texto en negrita */
+    margin-bottom: 0.5rem;          /* Margen inferior */
+    color: #e10600;                 /* Color rojo característico de F1 */
+}
+
+/* Contenedor de elementos de información de la carrera */
+.bsp_race_elements {
+    display: flex;                  /* Muestra elementos en línea */
+    align-items: center;            /* Centra verticalmente los elementos */
+    margin-bottom: 0.5rem;          /* Margen inferior */
+    color: #666;                    /* Color de texto gris */
+}
+
+/* Iconos dentro de los elementos de la carrera */
+.bsp_race_elements i {
+    margin-right: 0.5rem;           /* Espacio a la derecha del icono */
+    color: #e10600;                 /* Color rojo para los iconos */
+}
+
+/* Estado de la carrera (ej: "Próximamente", "En curso") */
+.bsp_race_status {
+    margin-top: 0.5rem;             /* Margen superior */
+    font-weight: 500;               /* Grosor de fuente medio */
+}
+
+/* Clase para estados positivos (verde) */
+.bsp_sts_green {
+    color: #27ae60;                 /* Color verde para estados positivos */
+}
+
+/* Clase para estados inactivos o neutrales (gris) */
+.bsp_sts_gray {
+    color: #7f8c8d;                 /* Color gris para estados inactivos */
+}
+
+/* ===== ESTILOS DEL PODIO ===== */
+
+/* Contenedor del podio */
+.bsp_race_leaderboard {
+    padding: 1rem;                  /* Espaciado interno */
+    background-color: #f9f9f9;      /* Fondo gris claro */
+    border-top: 1px solid #eee;     /* Borde superior sutil */
+}
+
+/* Título del podio */
+.bsp_winner_title {
+    font-weight: 700;               /* Texto en negrita */
+    margin-bottom: 0.5rem;          /* Margen inferior */
+    color: #333;                    /* Color de texto oscuro */
+}
+
+/* Contenedor de los elementos del podio */
+.podium-container {
+    display: flex;                  /* Muestra elementos en línea */
+    flex-wrap: wrap;                /* Permite saltos de línea */
+    gap: 1rem;                      /* Espacio entre elementos */
+}
+
+/* Elemento individual del podio */
+.podium-item {
+    display: flex;                  /* Usa flexbox para alinear elementos */
+    align-items: center;            /* Centra verticalmente */
+    background-color: #fff;         /* Fondo blanco */
+    padding: 0.5rem;                /* Espaciado interno */
+    border-radius: 8px;             /* Bordes redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    flex: 1;                        /* Ocupa espacio disponible */
+    min-width: 250px;               /* Ancho mínimo */
+}
+
+/* Insignia de posición en el podio */
+.position-badge {
+    background-color: #e10600;      /* Fondo rojo F1 */
+    color: white;                   /* Texto blanco */
+    width: 24px;                    /* Ancho fijo */
+    height: 24px;                   /* Altura fija */
+    border-radius: 50%;             /* Forma circular */
+    display: flex;                  /* Flexbox para centrar */
+    align-items: center;            /* Centrado vertical */
+    justify-content: center;        /* Centrado horizontal */
+    font-weight: 700;               /* Texto en negrita */
+    margin-right: 0.5rem;           /* Margen derecho */
+}
+
+/* Avatar del piloto */
+.rider-avatar {
+    width: 40px;                    /* Ancho fijo */
+    height: 40px;                   /* Altura fija */
+    border-radius: 50%;             /* Forma circular */
+    object-fit: cover;              /* Ajuste de imagen */
+    margin-right: 0.5rem;           /* Margen derecho */
+}
+
+/* Nombre del piloto */
+.rider-name {
+    font-weight: 700;               /* Texto en negrita */
+    color: #333;                    /* Color de texto oscuro */
+}
+
+/* Equipo del piloto */
+.rider-team {
+    font-size: 0.8rem;              /* Tamaño de fuente pequeño */
+    color: #666;                    /* Color de texto gris */
+}
+
+/* ===== CONTADOR REGRESIVO ===== */
+
+/* Contenedor principal del contador */
+.countdown-container {
+    background-color: #ff0606;      /* Fondo rojo */
+    padding: 2rem;                  /* Espaciado interno */
+    border-radius: 8px;             /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgb(255, 255, 255); /* Sombra blanca */
+    margin-bottom: 1rem;            /* Margen inferior */
+}
+
+/* Título del contador */
+.countdown-title {
+    font-size: 1.5rem;              /* Tamaño de fuente grande */
+    font-weight: 700;               /* Texto en negrita */
+    color: #e10600;                 /* Color rojo F1 */
+    margin-bottom: 1rem;            /* Margen inferior */
+}
+
+/* Fecha del evento */
+.countdown-date {
+    font-size: 1.1rem;              /* Tamaño de fuente */
+    color: #413f3fec;               /* Color de texto oscuro con transparencia */
+    margin-bottom: 1.5rem;          /* Margen inferior */
+}
+
+/* Contenedor del tiempo restante */
+.countdown-time {
+    display: flex;                  /* Muestra elementos en línea */
+    justify-content: center;        /* Centra horizontalmente */
+    gap: 1rem;                      /* Espacio entre elementos */
+}
+
+/* Estilos comunes para días, horas, minutos y segundos */
+.countdown-days,
+.countdown-hours,
+.countdown-minutes,
+.countdown-seconds {
+    background-color: #e10600;      /* Fondo rojo F1 */
+    color: #e5ff00;                 /* Texto amarillo */
+    padding: 1rem;                  /* Espaciado interno */
+    border-radius: 8px;             /* Bordes redondeados */
+    text-align: center;             /* Texto centrado */
+    flex: 1;                        /* Ocupa espacio disponible */
+    min-width: 80px;                /* Ancho mínimo */
+}
+
+/* Valor numérico del contador */
+.countdown-value {
+    font-size: 2rem;                /* Tamaño de fuente muy grande */
+    font-weight: 700;               /* Texto en negrita */
+    display: block;                 /* Muestra en bloque */
+    margin-bottom: 0.5rem;          /* Margen inferior */
+}
+
+/* Etiqueta del contador (días, horas, etc.) */
+.countdown-label {
+    font-size: 0.9rem;              /* Tamaño de fuente pequeño */
+    color: #ffffff;                 /* Texto blanco */
+}
+
+/* Estilo cuando el contador ha terminado */
+.countdown-finished {
+    background-color: #27ae60;      /* Fondo verde */
+    color: white;                   /* Texto blanco */
+    padding: 1rem;                  /* Espaciado interno */
+    border-radius: 8px;             /* Bordes redondeados */
+    text-align: center;             /* Texto centrado */
+    font-size: 1.2rem;              /* Tamaño de fuente */
+    font-weight: 700;               /* Texto en negrita */
+}
+
+/* ===== ESTILOS DE CLASIFICACIONES ===== */
+
+/* Contenedor principal de la sección de clasificaciones */
+.standings-container {
+    padding: 1rem 0;                /* Espaciado vertical */
+}
+
+/* Título de la sección de clasificaciones */
+.standings-container h2 {
+    margin-bottom: 1rem;            /* Margen inferior */
+    color: #e10600;                 /* Color rojo característico de F1 */
+}
+
+/* Tabla de clasificaciones */
+.standings-table {
+    width: 100%;                    /* Ancho completo del contenedor */
+    border-collapse: collapse;      /* Colapsa los bordes de las celdas */
+    margin-bottom: 2rem;            /* Margen inferior */
+    background-color: #fff;         /* Fondo blanco */
+    border-radius: 8px;             /* Bordes redondeados */
+    overflow: hidden;               /* Oculta el desbordamiento */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Celdas de encabezado y datos de la tabla */
+.standings-table th, .standings-table td {
+    padding: 0.75rem 1rem;          /* Espaciado interno */
+    text-align: left;               /* Alineación del texto a la izquierda */
+}
+
+/* Estilo de las celdas de encabezado */
+.standings-table th {
+    background-color: #d8d221af;    /* Fondo amarillo con transparencia */
+    color: #1100ff;                 /* Color de texto azul */
+    font-weight: 500;               /* Grosor de fuente medio */
+}
+
+/* Filas pares con fondo ligeramente gris para mejor legibilidad */
+.standings-table tr:nth-child(even) {
+    background-color: #f9f9f9;      /* Fondo gris muy claro */
+}
+
+/* Efecto hover en las filas de la tabla */
+.standings-table tr:hover {
+    background-color: #f1f1f1;      /* Fondo gris claro al pasar el ratón */
+}
+
+/* Contenedor de información del piloto en la tabla */
+.rider-info {
+    display: flex;                  /* Usa flexbox para alinear elementos */
+    align-items: center;            /* Centrado vertical */
+}
+
+/* Imagen del piloto en la tabla de clasificación */
+.rider-info img {
+    margin-right: 0.5rem;           /* Margen derecho para separar la imagen del texto */
+}
+
+/* ===== ESTILOS DE CIRCUITOS ===== */
+
+/* Cuadrícula de tarjetas de circuito */
+.circuit-grid {
+    display: grid;  /* Usa CSS Grid para el diseño */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas responsivas */
+    gap: 1.5rem;   /* Espacio entre tarjetas */
+    margin-bottom: 2rem;  /* Margen inferior */
+}
+
+/* Tarjeta individual de circuito */
+.circuit-card {
+    background-color: #fff;  /* Fondo blanco */
+    border-radius: 8px;     /* Bordes redondeados */
+    overflow: hidden;       /* Oculta el desbordamiento */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover en la tarjeta de circuito */
+.circuit-card:hover {
+    transform: translateY(-5px); /* Levanta ligeramente la tarjeta */
+}
+
+/* Contenedor de la imagen del circuito */
+.circuit-image {
+    height: 220px;  /* Altura fija */
+    overflow: hidden; /* Oculta el desbordamiento */
+}
+
+/* Imagen del circuito */
+.circuit-image img {
+    width: 100%;    /* Ancho completo del contenedor */
+    height: 100%;   /* Altura completa del contenedor */
+    object-fit: cover; /* Ajusta la imagen para cubrir el espacio */
+}
+
+/* Información del circuito */
+.circuit-info {
+    padding: 1rem;  /* Espaciado interno */
+}
+
+/* Título del circuito */
+.circuit-info h4 {
+    margin-bottom: 0.5rem;  /* Margen inferior */
+    color: #e10600;  /* Color rojo F1 */
+}
+
+/* Ubicación del circuito */
+.circuit-location {
+    color: #666;  /* Color de texto gris */
+    margin-bottom: 1rem;  /* Margen inferior */
+}
+
+/* Detalles del circuito */
+/* Contenedor de detalles del circuito */
+.circuit-details {
+    margin-bottom: 1rem;  /* Margen inferior */
+}
+
+/* Elemento individual de detalle (ej: longitud, vueltas, etc.) */
+.detail-item {
+    display: flex;                  /* Usa flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre etiqueta y valor */
+    margin-bottom: 0.5rem;          /* Margen inferior */
+    font-size: 0.9rem;              /* Tamaño de fuente */
+}
+
+/* Etiqueta del detalle (ej: "Longitud:") */
+.detail-label {
+    color: #666;        /* Color de texto gris */
+    font-weight: 500;   /* Grosor de fuente medio */
+}
+
+/* Valor del detalle (ej: "5.412 km") */
+.detail-value {
+    color: #333;        /* Color de texto oscuro */
+    font-weight: 500;   /* Grosor de fuente medio */
+}
+
+/* Contenedor de botones de acción del circuito */
+.circuit-actions {
+    display: flex;      /* Muestra botones en línea */
+    gap: 0.5rem;        /* Espacio entre botones */
+    margin-top: 1rem;   /* Margen superior */
+}
+
+/* Estilo base para botones */
+.btn {
+    display: inline-flex;           /* Usa flexbox para alinear iconos y texto */
+    align-items: center;            /* Centrado vertical */
+    justify-content: center;        /* Centrado horizontal */
+    padding: 0.5rem 1rem;           /* Espaciado interno */
+    border: none;                   /* Sin borde */
+    border-radius: 4px;             /* Bordes redondeados */
+    font-weight: 500;               /* Grosor de fuente medio */
+    cursor: pointer;                /* Cursor de puntero */
+    transition: all 0.3s ease;      /* Transición suave */
+    text-decoration: none;          /* Sin subrayado */
+}
+
+/* Iconos dentro de los botones */
+.btn i {
+    margin-right: 0.5rem;           /* Espacio entre icono y texto */
+}
+
+/* Botón primario (relleno rojo) */
+.btn-primary {
+    background-color: #e10600;      /* Fondo rojo F1 */
+    color: white;                   /* Texto blanco */
+}
+
+/* Efecto hover para botón primario */
+.btn-primary:hover {
+    background-color: #b80500;      /* Fondo rojo más oscuro */
+}
+
+/* Botón con borde (outline) */
+.btn-outline {
+    background-color: transparent;   /* Fondo transparente */
+    border: 1px solid #e10600;      /* Borde rojo */
+    color: #e10600;                 /* Texto rojo */
+}
+
+/* Efecto hover para botón outline */
+.btn-outline:hover {
+    background-color: #f9f9f9;      /* Fondo gris muy claro */
+}
+
+/* ===== BOTÓN 'CARGAR MÁS' ===== */
+
+/* Efecto hover para el botón de cargar más */
+.load-more-button:hover {
+    background-color: #b30500;  /* Color rojo más oscuro al pasar el ratón */
+}
+
+/* Contenedor del botón de cargar más */
+.load-more-container {
+    text-align: center;        /* Centra el contenido */
+    margin-top: 1rem;          /* Margen superior */
+}
+
+/* Estilo base del botón de cargar más */
+.load-more-button {
+    background-color: #e10600;  /* Fondo rojo F1 */
+    color: white;              /* Texto blanco */
+    border: none;              /* Sin borde */
+    padding: 0.75rem 1.5rem;    /* Espaciado interno */
+    border-radius: 4px;        /* Bordes redondeados */
+    cursor: pointer;           /* Cursor de puntero */
+    font-weight: 500;          /* Grosor de fuente medio */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover para el botón de cargar más */
+.load-more-button:hover {
+    background-color: #b30500;  /* Color rojo más oscuro al pasar el ratón */
+}
+
+/* Mensaje que se muestra cuando ya no hay más elementos para cargar */
+.all-loaded-message {
+    margin-top: 1rem;          /* Margen superior */
+    color: #666;               /* Color de texto gris */
+}
+
+/* ===== ESTILOS DE EQUIPOS ===== */
+
+/* Contenedor principal de la cuadrícula de equipos */
+.teams-container {
+    display: grid;  /* Usa CSS Grid para el diseño */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas responsivas */
+    gap: 1.5rem;   /* Espacio entre tarjetas */
+}
+
+/* Tarjeta individual de equipo */
+.team-card {
+    background-color: #fff;         /* Fondo blanco */
+    border-radius: 8px;             /* Bordes redondeados */
+    overflow: hidden;               /* Oculta el desbordamiento */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Contenedor de la imagen del equipo */
+.team-image {
+    height: 180px;      /* Altura fija */
+    overflow: hidden;   /* Oculta el desbordamiento */
+    position: relative; /* Para posicionar elementos hijos de forma absoluta */
+}
+
+/* Imagen del coche o equipo */
+.team-image img {
+    width: 100%;        /* Ancho completo del contenedor */
+    height: 100%;       /* Altura completa del contenedor */
+    object-fit: cover;  /* Ajusta la imagen para cubrir el espacio */
+}
+
+/* Logo del equipo (posicionado en la parte inferior) */
+.team-logo {
+    position: absolute;
+    bottom: -25px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.team-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.team-info {
+    padding: 1.5rem 1rem 1rem;
+}
+
+.team-info h3 {
+    margin-bottom: 0.5rem;
+    color: #e10600;
+}
+
+/* Estilos para las imágenes de los pilotos */
+.team-drivers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.driver {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 120px;
+    text-align: center;
+}
+
+.driver-image {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 0.5rem;
+    border-radius: 50%;
+    overflow: visible;
+    border: 2px solid #e10600;
+    background-color: #f8f8f8;
+}
+
+.driver-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: opacity 0.3s ease;
+    display: block;
+}
+
+.flag-container {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 24px;
+    height: 16px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: white;
+    z-index: 2;
+}
+
+.flag-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.driver-info {
+    margin-top: 0.5rem;
+}
+
+.driver-number {
+    display: inline-block;
+    background-color: #e10600;
+    color: white;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    margin-right: 0.25rem;
+}
+
+.driver-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.team-details {
+    margin-bottom: 1rem;
+}
+
+.team-detail {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.team-detail i {
+    color: #e10600;
+    margin-right: 0.5rem;
+    width: 20px;
+}
+
+.team-drivers {
+    margin-top: 1rem;
+}
+
+.team-drivers h4 {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.driver-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.driver-number {
+    font-weight: 700;
+    margin-right: 0.5rem;
+    color: #e10600;
+}
+
+/* Pronóstico del tiempo */
+.weather-container {
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.weather-container h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.weather-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.weather-day {
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.weather-day h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.weather-icon img {
+    width: 50px;
+    height: 50px;
+}
+
+.weather-temp {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.max-temp {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.min-temp {
+    color: #3498db;
+    margin-left: 8px;
+}
+
+.weather-condition {
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.weather-details {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+.error {
+    text-align: center;
+    padding: 15px;
+    color: #e74c3c;
+    background-color: #fadbd8;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.warning {
+    text-align: center;
+    padding: 15px;
+    color: #f39c12;
+    background-color: #fef5e7;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.retry-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.retry-button:hover {
+    background-color: #2980b9;
+}
+
+.weather-day.error {
+    background-color: #fadbd8;
+    color: #e74c3c;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .tab-container {
+        justify-content: space-between;
+    }
+    
+    .tab-head {
+        padding: 1rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .podium-container {
+        flex-direction: column;
+    }
+    
+    .circuit-grid, .teams-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Estilos para la cuadrícula de equipos */
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.team-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Logo del equipo (posicionado en la parte inferior) */
+.team-logo {
+    position: absolute;        /* Posicionamiento absoluto respecto al contenedor padre */
+    bottom: -20px;            /* Desplazamiento hacia abajo para que sobresalga */
+    right: 20px;              /* Alineación a la derecha */
+    width: 80px;              /* Ancho del contenedor del logo */
+    height: 80px;             /* Altura del contenedor del logo */
+    background-color: white;  /* Fondo blanco */
+    border-radius: 50%;       /* Forma circular */
+    display: flex;            /* Usa flexbox para centrar el logo */
+    align-items: center;      /* Centrado vertical */
+    justify-content: center;  /* Centrado horizontal */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para efecto de elevación */
+}
+
+/* Imagen del logo del equipo */
+.team-logo img {
+    width: 70%;              /* Ancho del 70% del contenedor */
+    height: 70%;             /* Altura del 70% del contenedor */
+    object-fit: contain;     /* Ajusta la imagen sin distorsionar */
+}
+
+/* Contenedor de información del equipo */
+.team-info {
+    padding: 1.5rem;         /* Espaciado interno */
+}
+
+/* Nombre del equipo */
+.team-info h3 {
+    font-size: 1.25rem;      /* Tamaño de fuente */
+    margin-bottom: 0.5rem;   /* Margen inferior */
+    color: #333;             /* Color de texto oscuro */
+}
+
+/* Contenedor de detalles del equipo */
+.team-details {
+    margin: 1rem 0;          /* Márgenes superior e inferior */
+}
+
+/* Elemento individual de detalle (ej: jefe de equipo, motor) */
+.team-detail {
+    display: flex;           /* Usa flexbox para alinear icono y texto */
+    align-items: center;     /* Centrado vertical */
+    margin-bottom: 0.5rem;   /* Margen inferior */
+    font-size: 0.9rem;       /* Tamaño de fuente */
+    color: #666;             /* Color de texto gris */
+}
+
+/* Iconos en los detalles del equipo */
+.team-detail i {
+    margin-right: 0.5rem;    /* Margen derecho */
+    color: #e10600;          /* Color rojo F1 */
+}
+
+/* Sección de pilotos del equipo */
+.team-drivers {
+    margin-top: 1rem;        /* Margen superior */
+    padding-top: 1rem;       /* Espaciado superior */
+    border-top: 1px solid #eee; /* Línea divisoria */
+}
+
+/* Título de la sección de pilotos */
+.team-drivers h4 {
+    font-size: 1rem;         /* Tamaño de fuente */
+    margin-bottom: 0.75rem;  /* Margen inferior */
+    color: #333;             /* Color de texto oscuro */
+}
+
+/* Elemento de piloto individual */
+.driver-item {
+    display: flex;           /* Usa flexbox para alinear elementos */
+    align-items: center;     /* Centrado vertical */
+    padding: 0.5rem 0;       /* Espaciado vertical */
+    border-bottom: 1px solid #f5f5f5; /* Línea divisoria sutil */
+}
+
+/* Elimina el borde inferior del último elemento */
+.driver-item:last-child {
+    border-bottom: none;     /* Sin borde inferior */
+}
+
+/* Número del piloto */
+.driver-number {
+    display: inline-flex;    /* Usa flexbox para centrar el número */
+    align-items: center;     /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    width: 24px;             /* Ancho fijo */
+    height: 24px;            /* Altura fija */
+    background-color: #e10600; /* Fondo rojo F1 */
+    color: white;            /* Texto blanco */
+    border-radius: 50%;      /* Forma circular */
+    font-size: 0.8rem;       /* Tamaño de fuente */
+    font-weight: 700;        /* Texto en negrita */
+    margin-right: 0.75rem;   /* Margen derecho */
+}
+
+/* Nombre del piloto */
+.driver-name {
+    flex: 1;                /* Ocupa el espacio disponible */
+    font-weight: 500;       /* Grosor de fuente medio */
+    color: #333;            /* Color de texto oscuro */
+}
+
+/* Detalles del equipo */
+.team-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.team-details p {
+    margin: 0.3rem 0;
+}
+
+.team-details strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Mensajes de carga y error */
+.loading, .error {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.error {
+    color: #e10600;
+}
+
+/* Contenedor de la información del piloto (número y nombre) */
+.driver-info {
+    display: flex;               /* Usa flexbox para organizar el contenido */
+    flex-direction: column;      /* Apila los elementos verticalmente */
+}
+
+/* Estilo para el número del piloto */
+.driver-number {
+    display: inline-block;       /* Permite dimensiones personalizadas */
+    width: 24px;                 /* Ancho fijo */
+    height: 24px;                /* Altura fija (igual al ancho para hacerlo circular) */
+    background-color: #2b00ff;   /* Color de fondo azul */
+    color: white;                /* Color del texto en blanco */
+    border-radius: 50%;          /* Hace que el contenedor sea circular */
+    text-align: center;          /* Centra el texto horizontalmente */
+    line-height: 24px;           /* Centra el texto verticalmente */
+    font-size: 0.8rem;           /* Tamaño de fuente */
+    font-weight: bold;           /* Texto en negrita */
+    margin-right: 8px;           /* Espacio a la derecha del número */
+}
+
+/* Estilo para el nombre del piloto */
+.driver-name {
+    font-weight: 500;            /* Grosor de la fuente */
+    color: #333;                 /* Color de texto oscuro */
+    font-size: 0.95rem;          /* Tamaño de fuente ligeramente más grande */
+}
+
+/* ===== ESTILOS PARA LAS BANDERAS DE LOS PAÍSES ===== */
+
+/* 
+ * Contenedor de la bandera que se aplica a elementos con el atributo data-country
+ * Se usa para mostrar la bandera del país de origen del piloto
+ */
+.driver-flag[data-country] {
+    position: relative;          /* Permite posicionar elementos hijos de forma absoluta */
+}
+
+/* 
+ * Pseudoelemento que muestra la bandera como un círculo en la esquina inferior derecha
+ * de la imagen del piloto
+ */
+.driver-flag[data-country]::after {
+    content: '';                 /* Necesario para que se muestre el pseudoelemento */
+    position: absolute;          /* Posición absoluta respecto al contenedor padre */
+    bottom: -5px;                /* Posición desde abajo */
+    right: -5px;                 /* Posición desde la derecha */
+    width: 24px;                 /* Tamaño de la bandera */
+    height: 16px;                /* Altura de la bandera */
+    border: 1px solid #fff;       /* Borde blanco para mejor visibilidad */
+    border-radius: 2px;           /* Bordes ligeramente redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    background-color: #f8f8f8;    /* Fondo por si la imagen no carga */
+}
+
+/* Contenedor de la bandera */
+.flag-container {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    z-index: 2;
+}
+
+/* ===== BANDERAS ESPECÍFICAS POR PAÍS (SVG EN LÍNEA) ===== */
+
+/* 
+ * Bandera de Países Bajos (Holanda)
+ * Código de país: netherlands
+ */
+.driver-flag[data-country="netherlands"]::after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><path fill="#21468B" d="M0 0h9v6H0z"/><path fill="#FFF" d="M0 0h9v4H0z"/><path fill="#AE1C28" d="M0 0h9v2H0z"/></svg>');
+}
+
+/* 
+ * Bandera de México
+ * Código de país: mexico
+ */
+.driver-flag[data-country="mexico"]::after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><path fill="#006847" d="M0 0h3v6H0z"/><path fill="#fff" d="M3 0h3v6H3z"/><path fill="#ce1126" d="M6 0h3v6H6z"/><path d="M4.5 2.5l.5 1.5h-.5l-.5-1z" fill="#006847"/></svg>');
+}
+
+/* 
+ * Bandera del Reino Unido (Inglaterra, Escocia, Gales, Irlanda del Norte)
+ * Código de país: uk
+ */
+.driver-flag[data-country="uk"]::after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><path fill="#012169" d="M0 0h60v30H0z"/><path stroke="#FFF" stroke-width="6" d="M0 0l60 30m0-30L0 30"/><path stroke="#C8102E" stroke-width="4" d="M0 0l60 30m0-30L0 30" stroke-linecap="square"/><path stroke="#FFF" stroke-width="10" d="M30 0v30M0 15h60"/><path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/></svg>');
+    background-size: 100% 100%;   /* Asegura que la bandera ocupe todo el espacio */
+}
+
+/* 
+ * Bandera de Mónaco
+ * Código de país: monaco
+ */
+.driver-flag[data-country="monaco"]::after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><path fill="#CE1126" d="M0 0h9v6H0z"/><path fill="#F7D116" d="M0 3h9v3H0z"/></svg>');
+}

@@ -1,0 +1,9 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'>
+  <!-- Casco de piloto F1 -->
+  <circle cx='50' cy='35' r='25' fill='#e10600'/>
+  <circle cx='50' cy='35' r='20' fill='#ffffff'/>
+  <path d='M30 35 C30 25 40 15 50 15 C60 15 70 25 70 35 C70 45 60 55 50 55 C40 55 30 45 30 35' fill='#e10600'/>
+  <path d='M40 30 C40 25 45 20 50 20 C55 20 60 25 60 30 C60 35 55 40 50 40 C45 40 40 35 40 30' fill='#ffffff'/>
+  <!-- Cuerpo -->
+  <path d='M50 65 C20 65 15 95 15 100 L85 100 C85 95 80 65 50 65z' fill='#e10600'/>
+</svg>

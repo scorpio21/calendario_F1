@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Actualización de Datos F1</title>
+    <script>
+        // Deshabilitar Service Worker temporalmente
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                for (let registration of registrations) {
+                    console.log('Desregistrando ServiceWorker:', registration.scope);
+                    registration.unregister();
+                }
+            });
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #e10600 !important;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #e10600;
+            border-color: #e10600;
+        }
+        .btn-primary:hover {
+            background-color: #b20500;
+            border-color: #b20500;
+        }
+        #output {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .status-badge {
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2><i class="bi bi-speedometer2"></i> Panel de Control - F1 2025</h2>
+                <p class="text-muted">Actualización de datos y gestión de la aplicación</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-arrow-repeat"></i> Actualización de Datos
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Actualización Automática</h5>
+                        <p class="card-text">Actualiza todos los datos de carreras, pilotos y equipos.</p>
+                        
+                        <div class="d-grid gap-2">
+                            <button id="btnUpdateAll" class="btn btn-primary">
+                                <i class="bi bi-arrow-repeat"></i> Actualizar Todo
+                            </button>
+                            <button id="btnUpdateRaces" class="btn btn-outline-secondary">
+                                <i class="bi bi-flag"></i> Solo Carreras
+                            </button>
+                            <button id="btnUpdateDrivers" class="btn btn-outline-secondary">
+                                <i class="bi bi-people"></i> Solo Pilotos
+                            </button>
+                            <button id="btnUpdateTeams" class="btn btn-outline-secondary">
+                                <i class="bi bi-trophy"></i> Solo Constructores
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <i class="bi bi-tools"></i> Herramientas
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Opciones Adicionales</h5>
+                        <div class="d-grid gap-2">
+                            <button id="btnClearCache" class="btn btn-warning">
+                                <i class="bi bi-trash"></i> Limpiar Caché
+                            </button>
+                            <button id="btnCheckStatus" class="btn btn-info text-white">
+                                <i class="bi bi-info-circle"></i> Ver Estado
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-terminal"></i> Salida de Consola
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="autoScroll" checked>
+                                <label class="form-check-label" for="autoScroll">Desplazamiento automático</label>
+                            </div>
+                        </div>
+                        <div id="output">[Sistema] Listo para ejecutar comandos...</div>
+                        <div class="mt-2 text-muted small">
+                            <i class="bi bi-info-circle"></i> Los comandos pueden tardar varios segundos en completarse.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Variables globales
+    let API_BASE_URL = '';
+    let output = null;
+    let autoScroll = null;
+    let isProcessing = false;
+    
+    // Función para inicializar los eventos de la interfaz
+    function initializeEvents() {
+        // Manejador del botón de actualización completa
+        document.getElementById('btnUpdateAll').addEventListener('click', () => {
+            log('Iniciando actualización completa...', 'info');
+            executeCommand('update_all');
+        });
+
+        document.getElementById('btnUpdateRaces').addEventListener('click', () => {
+            log('Actualizando datos de carreras...', 'info');
+            executeCommand('update_races');
+        });
+
+        document.getElementById('btnUpdateDrivers').addEventListener('click', () => {
+            log('Actualizando datos de pilotos...', 'info');
+            executeCommand('update_drivers');
+        });
+
+        document.getElementById('btnUpdateTeams').addEventListener('click', () => {
+            log('Actualizando datos de equipos...', 'info');
+            executeCommand('update_teams');
+        });
+
+        document.getElementById('btnClearCache').addEventListener('click', async () => {
+            log('Limpiando caché...', 'info');
+            try {
+                const response = await fetch(`${API_BASE_URL}/clear_cache.php`);
+                const result = await response.json();
+                if (result.success) {
+                    log('✅ Caché limpiada correctamente', 'success');
+                } else {
+                    log(`❌ Error al limpiar la caché: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Error al limpiar la caché: ${error.message}`, 'error');
+            }
+        });
+
+        document.getElementById('btnCheckStatus').addEventListener('click', async () => {
+            log('Verificando estado del sistema...', 'info');
+            try {
+                const response = await fetch(`${API_BASE_URL}/status.php`);
+                const status = await response.json();
+                
+                log('✅ Sistema operativo', 'success');
+                log(`- Última actualización: ${status.last_updated || 'No disponible'}`, 'info');
+                log(`- Versión: ${status.version || '1.0.0'}`, 'info');
+                log(`- Entorno: ${status.environment || 'production'}`, 'info');
+            } catch (error) {
+                log('⚠️ No se pudo verificar el estado completo del sistema', 'warning');
+                log(`- Estado básico: Operativo (${new Date().toLocaleString()})`, 'info');
+            }
+        });
+    }
+
+    // Inicialización cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            // Configuración de la API
+            API_BASE_URL = window.location.origin + '/calendarios/calendario-F1-2025/admin';
+            
+            // Elementos de la interfaz
+            output = document.getElementById('output');
+            autoScroll = document.getElementById('autoScroll');
+            isProcessing = false;
+            
+            // Función para mostrar mensajes en el log
+            function log(message, type = 'info') {
+                const timestamp = new Date().toLocaleTimeString();
+                const typeIcon = {
+                    'info': 'ℹ️',
+                    'success': '✅',
+                    'error': '❌',
+                    'warning': '⚠️'
+                }[type] || 'ℹ️';
+                
+                const line = document.createElement('div');
+                line.className = `log-entry ${type}`;
+                line.innerHTML = `<span class="text-muted">[${timestamp}]</span> ${typeIcon} ${message}`;
+                output.appendChild(line);
+                
+                if (autoScroll.checked) {
+                    output.scrollTop = output.scrollHeight;
+                }
+                
+                // Mantener un límite de líneas en la consola
+                const maxLines = 500;
+                const lines = output.getElementsByClassName('log-entry');
+                if (lines.length > maxLines) {
+                    output.removeChild(lines[0]);
+                }
+            }
+
+            async function executeCommand(command) {
+                if (isProcessing) {
+                    log('Ya hay una operación en curso. Por favor, espera...', 'warning');
+                    return;
+                }
+                
+                isProcessing = true;
+                const startTime = Date.now();
+                let lastLogTime = startTime;
+                let outputBuffer = '';
+                let loadingInterval;
+                let controller;
+                let timeoutId;
+                
+                // Función para mostrar el tiempo transcurrido
+                function updateLoadingMessage() {
+                    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                    const loadingElement = document.querySelector('.log-entry:last-child');
+                    if (loadingElement) {
+                        loadingElement.textContent = `⏳ Procesando ${command} (${elapsed}s)...`;
+                    }
+                }
+                
+                // Función para limpiar recursos
+                function cleanup() {
+                    if (loadingInterval) clearInterval(loadingInterval);
+                    if (timeoutId) clearTimeout(timeoutId);
+                    isProcessing = false;
+                }
+                
+                try {
+                    // Mostrar mensaje inicial
+                    log(`🚀 Iniciando: ${command}`, 'info');
+                    loadingInterval = setInterval(updateLoadingMessage, 1000);
+                    
+                    // Configurar el controlador de abortar
+                    controller = new AbortController();
+                    timeoutId = setTimeout(() => controller.abort(), 300000); // 5 minutos de timeout
+                    
+                    // Realizar la petición
+                    const response = await fetch(`${API_BASE_URL}/execute.php`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'text/event-stream'
+                        },
+                        body: JSON.stringify({ command }),
+                        signal: controller.signal
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${await response.text() || 'Error desconocido'}`);
+                    }
+                    
+                    if (!response.body) {
+                        throw new Error('No se pudo leer el cuerpo de la respuesta');
+                    }
+                    
+                    // Procesar la respuesta en streaming
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let buffer = '';
+                    let isComplete = false;
+                    
+                    // Procesar la respuesta en streaming
+                    try {
+                        while (true) {
+                            const { done, value } = await reader.read();
+                            if (done) break;
+                            
+                            // Decodificar el chunk y procesar líneas completas
+                            buffer += decoder.decode(value, { stream: true });
+                            const lines = buffer.split('\n');
+                            buffer = lines.pop() || ''; // Guardar la línea incompleta para la próxima iteración
+                            
+                            for (const line of lines) {
+                                if (!line.trim()) continue;
+                                
+                                try {
+                                    const data = JSON.parse(line);
+                                    if (data.type === 'output') {
+                                        log(data.data, 'info');
+                                    } else if (data.type === 'error') {
+                                        log(`❌ ${data.data}`, 'error');
+                                    } else if (data.type === 'complete') {
+                                        log(`✅ ${command} completado con éxito`, 'success');
+                                        if (data.data) {
+                                            log(JSON.stringify(data.data, null, 2), 'info');
+                                        }
+                                        isComplete = true;
+                                    }
+                                } catch (e) {
+                                    console.error('Error al procesar línea JSON:', e, 'Línea:', line);
+                                    log(`⚠️ Error al procesar línea: ${e.message}`, 'warning');
+                                }
+                            }
+                            
+                            // Si se completó el comando, salir del bucle
+                            if (isComplete) break;
+                        }
+                    } catch (streamError) {
+                        console.error('Error en el stream de respuesta:', streamError);
+                        log(`⚠️ Error en el flujo de datos: ${streamError.message}`, 'error');
+                        throw streamError; // Relanzar para ser capturado por el catch externo
+                    }
+                    
+                    // Procesar cualquier dato restante en el buffer
+                    if (buffer.trim() !== '') {
+                        try {
+                            const data = JSON.parse(buffer);
+                            if (data.type === 'output') {
+                                log(data.data, 'info');
+                            } else if (data.type === 'error') {
+                                log(`❌ ${data.data}`, 'error');
+                            } else if (data.type === 'complete') {
+                                log(`✅ ${command} completado con éxito`, 'success');
+                                if (data.data) {
+                                    log(JSON.stringify(data.data, null, 2), 'info');
+                                }
+                            }
+                        } catch (e) {
+                            console.error('Error al procesar buffer final:', e, 'Buffer:', buffer);
+                            log(`⚠️ Error al procesar respuesta final: ${e.message}`, 'warning');
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error en executeCommand:', error);
+                    let errorMessage = error.message || 'Error desconocido';
+                    
+                    // Mostrar más detalles del error si están disponibles
+                    if (error.response) {
+                        try {
+                            const errorData = await error.response.json();
+                            errorMessage += '\n' + JSON.stringify(errorData, null, 2);
+                        } catch (e) {
+                            // No se pudo parsear la respuesta de error como JSON
+                            try {
+                                const errorText = await error.response.text();
+                                errorMessage += '\n' + errorText;
+                            } catch (textError) {
+                                console.error('No se pudo obtener el texto del error:', textError);
+                            }
+                        }
+                    }
+                    
+                    log(`❌ ❌ Error en ${command}: ${errorMessage}`, 'error');
+                    log('  - Revisa la consola del navegador (F12) para más detalles', 'warning');
+                    
+                    // Mostrar sugerencias de solución
+                    if (errorMessage.includes('Failed to fetch')) {
+                        log('  - Verifica tu conexión a internet', 'warning');
+                        log('  - Intenta recargar la página (F5)', 'warning');
+                    }
+                } finally {
+                    clearInterval(loadingInterval);
+                    isProcessing = false;
+                    
+                    // Rehabilitar botones
+                    document.querySelectorAll('button').forEach(btn => {
+                        btn.disabled = false;
+                    });
+                }
+            };
+            
+            // Manejador del botón de actualización completa
+            document.getElementById('btnUpdateAll').addEventListener('click', () => {
+                log('Iniciando actualización completa...', 'info');
+                executeCommand('update_all');
+            });
+
+            document.getElementById('btnUpdateRaces').addEventListener('click', () => {
+                log('Actualizando datos de carreras...', 'info');
+                executeCommand('update_races');
+            });
+
+            document.getElementById('btnUpdateDrivers').addEventListener('click', () => {
+                log('Actualizando datos de pilotos...', 'info');
+                executeCommand('update_drivers');
+            });
+
+            document.getElementById('btnUpdateTeams').addEventListener('click', () => {
+                log('Actualizando datos de constructores...', 'info');
+                executeCommand('update_teams');
+            });
+
+            document.getElementById('btnClearCache').addEventListener('click', async () => {
+                log('Solicitando limpieza de caché...', 'info');
+                try {
+                    const response = await fetch('clear_cache.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status} ${response.statusText}`);
+                    }
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        log('✅ Caché limpiada correctamente', 'success');
+                        if (result.results && result.results.length > 0) {
+                            result.results.forEach(msg => log(`- ${msg}`, 'info'));
+                        }
+                    } else {
+                        log('❌ Error al limpiar la caché', 'error');
+                        if (result.results) {
+                            result.results.forEach(msg => log(`- ${msg}`, 'error'));
+                        }
+                    }
+                } catch (error) {
+                    log(`❌ Error al limpiar la caché: ${error.message}`, 'error');
+                }
+            });
+
+            document.getElementById('btnCheckStatus').addEventListener('click', async () => {
+                log('Verificando estado del sistema...', 'info');
+                try {
+                    const response = await fetch(`${API_BASE_URL}/status.php`);
+                    const status = await response.json();
+                    
+                    log('✅ Sistema operativo', 'success');
+                    log(`- Última actualización: ${status.last_updated || 'No disponible'}`, 'info');
+                    log(`- Versión: ${status.version || '1.0.0'}`, 'info');
+                    log(`- Entorno: ${status.environment || 'production'}`, 'info');
+                } catch (error) {
+                    log('⚠️ No se pudo verificar el estado completo del sistema', 'warning');
+                    log(`- Estado básico: Operativo (${new Date().toLocaleString()})`, 'info');
+                }
+            });
+            
+            // Verificar estado al cargar
+            log('Panel de control listo', 'success');
+            log(`Conectado a: ${API_BASE_URL}`, 'info');
+            
+            // Inicialización de eventos
+            initializeEvents();
+            
+        } catch (error) {
+            console.error('Error en la inicialización:', error);
+            log(`⚠️ Error en la inicialización: ${error.message}`, 'error');
+        }
+    });
+    </script>
+</body>
+</html>

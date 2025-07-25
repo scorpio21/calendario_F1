@@ -1,0 +1,151 @@
+/* Estilos para mejorar la accesibilidad */
+
+/* Mejoras de contraste */
+.race h3 {
+    color: #c00400; /* Rojo más oscuro para mejor contraste */
+    font-weight: bold;
+}
+
+.race-date, .race-location, .race-laps {
+    color: #333333; /* Texto más oscuro para mejor contraste */
+}
+
+.race-status {
+    font-weight: bold;
+}
+
+/* Mejorar contraste en botones */
+button, .btn, .tab-head {
+    color: #ffffff;
+    background-color: #e10600;
+    border: 2px solid transparent;
+}
+
+button:hover, .btn:hover, .tab-head:hover {
+    background-color: #b30500;
+}
+
+button:focus, .btn:focus, .tab-head:focus {
+    outline: 3px solid #0078d7;
+    outline-offset: 2px;
+}
+
+/* Mejorar contraste en enlaces */
+a {
+    color: #0066cc; /* Azul más oscuro para mejor contraste */
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #004499;
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 3px solid #0078d7;
+    outline-offset: 2px;
+}
+
+/* Mejorar contraste en tablas */
+table th {
+    background-color: #e10600;
+    color: white;
+    font-weight: bold;
+}
+
+table td {
+    color: #333333;
+    border-color: #999999;
+}
+
+table tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+/* Mejorar contraste en el pronóstico del tiempo */
+.weather-container h3 {
+    color: #c00400;
+    font-weight: bold;
+}
+
+.temperature {
+    color: #c00400;
+}
+
+.min-temp {
+    color: #0066cc;
+}
+
+.humidity, .wind {
+    color: #333333;
+}
+
+/* Mejorar contraste en el podio */
+.podium-step {
+    border: 2px solid #999999;
+}
+
+.podium-position {
+    font-weight: bold;
+}
+
+/* Clases de utilidad para accesibilidad */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #e10600;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Aumentar tamaño de texto para mejor legibilidad */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Mejorar espaciado para facilitar la lectura */
+p, li, td, th {
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+/* Mejorar foco visible */
+*:focus {
+    outline: 3px solid #0078d7;
+    outline-offset: 2px;
+}
+
+/* Mejorar contraste en modo de alto contraste */
+@media (forced-colors: active) {
+    button, .btn, .tab-head {
+        border: 2px solid currentColor;
+    }
+    
+    .race, .weather-container, .countdown-container {
+        border: 1px solid currentColor;
+    }
+}

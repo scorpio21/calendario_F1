@@ -1,0 +1,111 @@
+/* Estilos para el modal de detalles de carrera */
+.race-details-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.race-details-content {
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.race-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #e10600;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
+.race-details-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    padding: 0;
+    line-height: 1;
+}
+
+.race-details-body {
+    padding: 20px;
+}
+
+.race-info {
+    margin-bottom: 20px;
+}
+
+.race-info p {
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+.race-schedule, .circuit-info {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.race-schedule h4, .circuit-info h4 {
+    margin-top: 0;
+    color: #e10600;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.race-schedule ul, .circuit-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.race-schedule li, .circuit-info li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .race-details-content {
+        width: 95%;
+    }
+    
+    .race-details-header h3 {
+        font-size: 1.3rem;
+    }
+}

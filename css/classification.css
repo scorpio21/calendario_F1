@@ -1,0 +1,57 @@
+.classification-section {
+    margin-bottom: 2rem;
+}
+
+.classification-section h3 {
+    color: #e10600;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.classification-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.classification-table th,
+.classification-table td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.classification-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.classification-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.classification-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.classification-table .position {
+    width: 5%;
+}
+
+.classification-table .team,
+.classification-table .driver {
+    width: 30%;
+}
+
+.classification-table .points {
+    width: 15%;
+    text-align: right;
+}
+
+/* Estilos para tablas pequeñas en móviles */
+@media (max-width: 768px) {
+    .classification-table {
+        display: block;
+        overflow-x: auto;
+    }
+}

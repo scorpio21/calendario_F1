@@ -1,0 +1,31 @@
+/* Modal F1 Team */
+#team-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.3);
+  justify-content: center; align-items: center;
+}
+#team-modal .modal-backdrop {
+  position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 1;
+}
+#team-modal .modal-content {
+  position: absolute;
+  left: 50%; top: 50%; transform: translate(-50%,-50%);
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 24px 24px 24px;
+  min-width: 320px; max-width: 95vw; max-height: 90vh;
+  box-shadow: 0 10px 48px rgba(0,0,0,0.25);
+  z-index: 2;
+  overflow-y: auto;
+}
+#team-modal .modal-close {
+  position: absolute; right: 18px; top: 10px; font-size: 2rem; color: #999; cursor: pointer; z-index: 3;
+}
+body.modal-open {
+  overflow: hidden;
+}
